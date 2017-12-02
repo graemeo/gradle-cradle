@@ -39,4 +39,12 @@ task second {
    doFirst {
       println "Message from SEDOND task (doFirst) - will be called first when SECOND task is called, and before doLast"
    }
+} 
+
+task independent {
+   println "I am independent..."
+}
+
+task dependant (dependsOn: independent){
+   println "...dont think so..."
 }
