@@ -1,1 +1,24 @@
+class Greeter extends DefaultTask {
+   String message
+
+   @TaskAction
+   void greeting() {
+      println "${message}!"
+   }
+}
+
 apply plugin: 'base'
+
+task hello {
+   group "Custom"
+   description "First custom task to say hello!"
+   doLast {
+      println "Hello World!"
+   }
+}
+
+task goodbye (type : Greeter) {
+   group "Custom"
+   description "Custom good bye task created from a type, Greeter!"
+   message "Goodbye World"
+}
