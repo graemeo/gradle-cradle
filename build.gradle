@@ -22,3 +22,21 @@ task goodbye (type : Greeter) {
    description "Custom good bye task created from a type, Greeter!"
    message "Goodbye World"
 }
+
+task first {
+   group "Custom"
+   description "Will be invoked regardless of task that is invoked"
+   println "Message from FIRST task - will always be invoked even if this task isn't called explicitly"
+}
+
+task second {
+   group "Custom"
+   description "Will only be called when SECOND task is called given the actions are within the doFirst and doLast block"
+   doLast {
+      println "Message from SECOND task (doLast) - will be called after doFirst when SECOND task is called"
+   }
+
+   doFirst {
+      println "Message from SEDOND task (doFirst) - will be called first when SECOND task is called, and before doLast"
+   }
+}
