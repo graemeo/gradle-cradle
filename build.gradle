@@ -42,9 +42,17 @@ task second {
 } 
 
 task independent {
-   println "I am independent..."
+   group "Custom"
+   description "This task does not rely on any tasks"
+   doLast {
+      println "I am independent..."
+   }
 }
 
 task dependant (dependsOn: independent){
-   println "...dont think so..."
+   group "Custom"
+   description "This task is dependant on independent task"
+   doLast {
+      println "...dont think so..."
+   }
 }
